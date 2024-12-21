@@ -4,6 +4,7 @@ local Cube = Shape:extend()
 local Tetrahedron = Shape:extend()
 local Octahedron = Shape:extend()
 local Icosahedron = Shape:extend()
+local Dodecahedron = Shape:extend()
 
 function Cube:new()
   self.points = {}
@@ -67,10 +68,10 @@ function Icosahedron:new()
   self.points[#self.points+1] = Point(-t, -1, 0)
 
   self.edges = {
-    -- upper pentagon
+    -- upper pentagonal
     {1, 2}, {1, 5}, {1, 6}, {1, 9}, {1, 11},
     {2, 9}, {2, 11}, {5, 6}, {5, 9}, {6, 11},
-    -- lower pentagon
+    -- lower pentagonal
     {4, 3}, {4, 7}, {4, 8}, {4, 10}, {4, 12},
     {3, 10}, {3, 12}, {7, 10}, {7, 8}, {8, 12},
     -- connecting strip
@@ -79,5 +80,48 @@ function Icosahedron:new()
   }
 end
 
-local shapes = {Cube = Cube, Tetrahedron = Tetrahedron, Octahedron = Octahedron, Icosahedron = Icosahedron}
+function Dodecahedron:new()
+  local t = (-1 + math.sqrt(5)) / 2  -- golden ratio
+  self.points = {}
+  -- inscribed cube vertices
+  self.points[#self.points+1] = Point(1, 1, 1)
+  self.points[#self.points+1] = Point(1, 1, -1)
+  self.points[#self.points+1] = Point(1, -1, 1)
+  self.points[#self.points+1] = Point(1, -1, -1)
+  self.points[#self.points+1] = Point(-1, 1, 1)
+  self.points[#self.points+1] = Point(-1, 1, -1)
+  self.points[#self.points+1] = Point(-1, -1, 1)
+  --
+  self.points[#self.points+1] = Point(-1, -1, -1)
+  self.points[#self.points+1] = Point(t, 0, 1/t)
+  self.points[#self.points+1] = Point(t, 0, -1/t)
+  self.points[#self.points+1] = Point(-t, 0, 1/t)
+  self.points[#self.points+1] = Point(-t, 0, -1/t)
+  self.points[#self.points+1] = Point(0, 1/t, t)
+  self.points[#self.points+1] = Point(0, -1/t, t)
+  self.points[#self.points+1] = Point(0, 1/t, -t)
+  self.points[#self.points+1] = Point(0, -1/t, -t)
+  self.points[#self.points+1] = Point(1/t, t, 0)
+  self.points[#self.points+1] = Point(-1/t, t, 0)
+  self.points[#self.points+1] = Point(1/t, -t, 0)
+  self.points[#self.points+1] = Point(-1/t, -t, 0)
+
+  self.edges = {
+    -- upper pentagon
+    {1, 9}, {1, 17}, {9, 3}, {3, 19}, {17, 19},
+    -- lower pentagon
+    {20, 18}, {20, 8}, {8, 12}, {12, 6}, {18, 6},
+    -- strip
+    {2, 10}, {10, 4}, {4, 16}, {16, 14}, {14, 7},
+    {7, 11}, {11, 5}, {5, 13}, {13, 15}, {15, 2},
+    -- connecting the strip to the pentagons
+    {2, 17}, {10, 12}, {4, 19}, {16, 8}, {14, 3},
+    {7, 20}, {11, 9}, {5, 18}, {13, 1}, {15, 6}
+  }
+end
+
+local shapes = {
+  Cube = Cube, Tetrahedron = Tetrahedron, Octahedron = Octahedron,
+  Icosahedron = Icosahedron, Dodecahedron = Dodecahedron
+}
 return shapes
