@@ -1,4 +1,4 @@
-local Cube = require("cube")
+local shapes = require("shapes")
 local width, height = love.graphics.getDimensions()
 
 local fov = 10
@@ -7,13 +7,13 @@ local alpha = math.pi / 16
 local beta = math.pi / 32
 local gamma = math.pi / 64
 
-local cube = Cube()
+local shape = shapes.Tetrahedron()
 
 function love.update(dt)
-  cube:rotate(alpha, beta, gamma, dt)
+  shape:rotate(alpha, beta, gamma, dt)
 end
 
 function love.draw()
   love.graphics.translate(width / 2, height / 2)
-  cube:draw(fov, scale)
+  shape:draw(fov, scale)
 end
