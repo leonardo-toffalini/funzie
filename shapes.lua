@@ -1,11 +1,23 @@
 local Shape = require("shape")
 local Point = require("point")
+
+---@class Cube: Shape
 local Cube = Shape:extend()
+
+---@class Tetrahedron: Shape
 local Tetrahedron = Shape:extend()
+
+---@class Octahedron: Shape
 local Octahedron = Shape:extend()
+
+---@class Icosahedron: Shape
 local Icosahedron = Shape:extend()
+
+---@class Dodecahedron: Shape
 local Dodecahedron = Shape:extend()
 
+
+--- Constructor for the Cube class
 function Cube:new()
   self.points = {}
   self.points[#self.points+1] = Point(1, 1, 1)
@@ -24,6 +36,7 @@ function Cube:new()
   }
 end
 
+--- Constructor for the Tetrahedron class
 function Tetrahedron:new()
   self.points = {}
   self.points[#self.points+1] = Point(1, 1, 1)
@@ -35,6 +48,7 @@ function Tetrahedron:new()
   self.edges = {{1, 2}, {1, 3}, {1, 4}, {2, 3}, {2, 4}, {3, 4}}
 end
 
+--- Constructor for the Octahedron class
 function Octahedron:new()
   self.points = {}
   self.points[#self.points+1] = Point(0, 0, 1)
@@ -51,6 +65,7 @@ function Octahedron:new()
   }
 end
 
+--- Constructor for the Icosahedron class
 function Icosahedron:new()
   local t = (-1 + math.sqrt(5)) / 2  -- golden ratio
   self.points = {}
@@ -80,6 +95,7 @@ function Icosahedron:new()
   }
 end
 
+--- Constructor for the Dodecahedron class
 function Dodecahedron:new()
   local t = (-1 + math.sqrt(5)) / 2  -- golden ratio
   self.points = {}

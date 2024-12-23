@@ -1,21 +1,13 @@
---
--- classic
---
--- Copyright (c) 2014, rxi
---
--- This module is free software; you can redistribute it and/or modify it under
--- the terms of the MIT license. See LICENSE for details.
---
-
-
+---@class Object
 local Object = {}
 Object.__index = Object
 
-
+--- Constructor
 function Object:new()
 end
 
-
+--- Inheritance
+---@return table
 function Object:extend()
   local cls = {}
   for k, v in pairs(self) do
@@ -29,7 +21,7 @@ function Object:extend()
   return cls
 end
 
-
+---@param ... unknown
 function Object:implement(...)
   for _, cls in pairs({...}) do
     for k, v in pairs(cls) do
@@ -40,7 +32,8 @@ function Object:implement(...)
   end
 end
 
-
+---@param T any
+---@return boolean
 function Object:is(T)
   local mt = getmetatable(self)
   while mt do
@@ -52,17 +45,18 @@ function Object:is(T)
   return false
 end
 
-
+---@return string
 function Object:__tostring()
   return "Object"
 end
 
-
+--- Instantiation
+---@param ... unknown
+---@return Object
 function Object:__call(...)
   local obj = setmetatable({}, self)
   obj:new(...)
   return obj
 end
-
 
 return Object
