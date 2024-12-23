@@ -7,10 +7,14 @@ local scale = 100
 local alpha = math.pi / 16
 local beta = math.pi / 32
 local gamma = math.pi / 64
+
+-- args
 local shape = nil
+local mode = nil
 
 local params = {
-  {name = "shape", desc = "The shape to be rendered in 3D.", default = "cube"}
+  {name = "shape", desc = "The shape to be rendered in 3D.", default = "cube"},
+  {name = "mode", desc = 'The draw mode for the shape. Possible values: "points", "edges", "all"', default = "all"}
 }
 
 function love.load(args)
@@ -26,6 +30,7 @@ function love.load(args)
     os.exit()
   end
 
+  mode = parsedArgs.mode
 end
 
 function love.update(dt)
@@ -37,6 +42,6 @@ end
 function love.draw()
   love.graphics.translate(width / 2, height / 2)
   if shape ~= nil then
-    shape:draw("all", fov, scale)
+    shape:draw(mode, fov, scale)
   end
 end

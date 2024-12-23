@@ -52,11 +52,14 @@ end
 ---@param fov integer: Field of view, that is how for the screen is from the imaginary camera lense
 ---@param scale integer: How much the projection should be scaled up or down
 function Shape:draw(mode, fov, scale)
-  if mode == "points" then self:drawPoints(fov, scale) end
-  if mode == "edges" then self:drawEdges(fov, scale) end
-  if mode == "all" then
+  if mode == "points" then self:drawPoints(fov, scale)
+  elseif mode == "edges" then self:drawEdges(fov, scale)
+  elseif mode == "all" then
     self:drawEdges(fov, scale)
     self:drawPoints(fov, scale)
+  else
+    io.write(mode .. ' is not a valid drawing mode.\n\tPossible values for mode: "points", "edges", "all"\n')
+    os.exit(1)
   end
 end
 

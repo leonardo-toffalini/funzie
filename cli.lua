@@ -5,10 +5,21 @@ local cli = {}
 --   {name = "shape", desc = "The shape to be rendered in 3D.", default = "cube"}
 -- }
 
+---@class Param
+---@field name string
+---@field desc string
+---@field default? string
+
+---@param str string
+---@param start string
+---@return boolean
 local function startsWith(str, start)
   return str:sub(1, #start) == start
 end
 
+---@param params Param[]
+---@param arg any
+---@return boolean
 local function isValidParam(params, arg)
   for _, param in ipairs(params) do
     if param.name == arg then return true end
@@ -16,6 +27,7 @@ local function isValidParam(params, arg)
   return false
 end
 
+---@param params Param[]
 local function listParams(params)
   io.write("Available options:\n")
   for _, param in ipairs(params) do
@@ -27,6 +39,8 @@ local function listParams(params)
   end
 end
 
+---@param params Param[]
+---@return table
 local function defaultValues(params)
   local parsedArgs = {}
 
@@ -39,6 +53,9 @@ local function defaultValues(params)
   return parsedArgs
 end
 
+---@param params Param[]
+---@param args string[]
+---@return table
 function cli.parse(params, args)
   local parsedArgs = defaultValues(params)
   local currOption = nil
