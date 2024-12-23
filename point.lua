@@ -4,20 +4,20 @@ local sin = math.sin
 local cos = math.cos
 
 ---@class (exact) Point2D
----@field x number: The x coordinate of the point
----@field y number: The y coordinate of the point
+---@field x number The x coordinate of the point
+---@field y number The y coordinate of the point
 local Point2D
 
 ---@class (exact) Point3D
----@field x number: The x coordinate of the point
----@field y number: The y coordinate of the point
----@field z number: The z coordinate of the point
+---@field x number The x coordinate of the point
+---@field y number The y coordinate of the point
+---@field z number The z coordinate of the point
 local Point3D = Object:extend()
 
 --- Constructor for the Point3D class
----@param x number: The x coordinate of the point
----@param y number: The y coordinate of the point
----@param z number: The z coordinate of the point
+---@param x number The x coordinate of the point
+---@param y number The y coordinate of the point
+---@param z number The z coordinate of the point
 function Point3D:new(x, y, z)
   self.x = x
   self.y = y
@@ -25,10 +25,10 @@ function Point3D:new(x, y, z)
 end
 
 --- Rotates a Point3D class in three dimension
----@param alpha number: Rotation along the x-axis, in radians
----@param beta number: Rotation along the y-axis, in radians
----@param gamma number: Rotation along the z-axis, in radians
----@param dt number: Delta time, this is used to make the rendering framerate independent
+---@param alpha number Rotation along the x-axis, in radians
+---@param beta number Rotation along the y-axis, in radians
+---@param gamma number Rotation along the z-axis, in radians
+---@param dt number Delta time, this is used to make the rendering framerate independent
 function Point3D:rotate(alpha, beta, gamma, dt)
   alpha = alpha * dt
   beta = beta * dt
@@ -49,8 +49,8 @@ function Point3D:rotate(alpha, beta, gamma, dt)
 end
 
 --- Projects a Point3D to the screen, resulting in a Point2D
----@param fov integer: Field of view, that is how for the screen is from the imaginary camera lense
----@param scale integer: How much the projection should be scaled up or down
+---@param fov integer Field of view, that is how for the screen is from the imaginary camera lense
+---@param scale integer How much the projection should be scaled up or down
 ---@return Point2D
 function Point3D:project(fov, scale)
   return {

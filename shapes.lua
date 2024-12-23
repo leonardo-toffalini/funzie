@@ -34,6 +34,15 @@ function Cube:new()
     {1, 3}, {2, 4}, {3, 7}, {4, 8},
     {5, 7}, {6, 8}, {1, 5}, {2, 6}
   }
+
+  self.faces = {
+    {color = {0.7, 0, 0}, points = {1, 2, 4, 3}},
+    {color = {0.7, 0, 0}, points = {5, 6, 8, 7}},
+    {color = {0, 0.7, 0}, points = {3, 4, 8, 7}},
+    {color = {0, 0.7, 0}, points = {1, 2, 6, 5}},
+    {color = {0, 0, 0.7}, points = {1, 3, 7, 5}},
+    {color = {0, 0, 0.7}, points = {2, 4, 8, 6}}
+  }
 end
 
 --- Constructor for the Tetrahedron class
@@ -46,6 +55,13 @@ function Tetrahedron:new()
 
   -- every vertex is connected to every other vertex (4 choose 2)
   self.edges = {{1, 2}, {1, 3}, {1, 4}, {2, 3}, {2, 4}, {3, 4}}
+
+  self.faces = {
+    {color = {0.7, 0, 0}, points = {1, 2, 3}},
+    {color = {0, 0.7, 0}, points = {1, 2, 4}},
+    {color = {0, 0, 0.7}, points = {1, 3, 4}},
+    {color = {0.7, 0.7, 0}, points = {2, 3, 4}},
+  }
 end
 
 --- Constructor for the Octahedron class
