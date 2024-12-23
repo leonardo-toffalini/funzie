@@ -79,6 +79,17 @@ function Octahedron:new()
     {2, 3}, {2, 4}, {2, 5}, {2, 6},
     {4, 5}, {3, 5}, {3, 6}, {4, 6}
   }
+
+  self.faces = {
+    {color = {0.7, 0, 0}, points = {1, 3, 5}},
+    {color = {0, 0.7, 0}, points = {1, 3, 6}},
+    {color = {0, 0, 0.7}, points = {1, 4, 5}},
+    {color = {0.7, 0.7, 0}, points = {1, 4, 6}},
+    {color = {0.7, 0, 0}, points = {2, 4, 6}},
+    {color = {0, 0.7, 0}, points = {2, 3, 5}},
+    {color = {0, 0, 0.7}, points = {2, 3, 6}},
+    {color = {0.7, 0.7, 0}, points = {2, 4, 5}},
+  }
 end
 
 --- Constructor for the Icosahedron class
@@ -149,6 +160,21 @@ function Dodecahedron:new()
     -- connecting the strip to the pentagons
     {2, 17}, {10, 12}, {4, 19}, {16, 8}, {14, 3},
     {7, 20}, {11, 9}, {5, 18}, {13, 1}, {15, 6}
+  }
+
+  self.faces = {
+    {color = {0.7, 0, 0}, points = {1, 9, 3, 19, 17}},
+    {color = {0, 0, 0.7}, points = {6, 12, 8, 20, 18}},
+    {color = {0, 0, 0.7}, points = {2, 10, 4, 19, 17}},
+    {color = {0, 0.7, 0}, points = {17, 2, 15, 13, 1}},
+    {color = {0.7, 0.7, 0}, points = {5, 13, 1, 9, 11}},
+    {color = {0, 0.7, 0}, points = {7, 20, 18, 5, 11}},
+    {color = {0.7, 0, 0}, points = {18, 6, 15, 13, 5}},
+    {color = {0.7, 0.7, 0}, points = {7, 20, 8, 16, 14}},
+    {color = {0, 0, 0.7}, points = {3, 9, 11, 7, 14}},
+    {color = {0, 0.7, 0}, points = {3, 14, 16, 4, 19}},
+    {color = {0.7, 0, 0}, points = {16, 4, 10, 12, 8}},
+    {color = {0.7, 0.7, 0}, points = {15, 2, 10, 12, 6}},
   }
 end
 

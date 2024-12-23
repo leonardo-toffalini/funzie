@@ -20,13 +20,12 @@ end
 --- Helper function to calculate the maximal z value of an array of 3D points
 ---@param points3d Point3D[]
 ---@return number?
-local function minZ(points3d)
-  if #points3d == 0 then return nil end
-  local currMin = points3d[1].z
+local function avgZ(points3d)
+  local total = 0
   for _, point in ipairs(points3d) do
-    currMin = math.min(currMin, point.z)
+    total = total + point.z
   end
-  return currMin
+  return total / #points3d
 end
 
 --- Sort the faces of a shape based on the face's maximal z value
@@ -37,7 +36,7 @@ function Shape:sortFaces()
   for i, face in ipairs(self.faces) do
     local points3d = {}
     for _, idx in ipairs(face.points) do points3d[#points3d+1] = self.points[idx] end
-    absoluteFaces[#absoluteFaces+1] = {index = i, z = minZ(points3d)}
+    absoluteFaces[#absoluteFaces+1] = {index = i, z = avgZ(points3d)}
   end
 
   table.sort(absoluteFaces, function(left, right)
