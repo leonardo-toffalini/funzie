@@ -115,8 +115,8 @@ function Shape:draw(mode, fov, scale)
   elseif mode == "edges" then self:drawEdges(fov, scale)
   elseif mode == "faces" then self:drawFaces(fov, scale)
   elseif mode == "all" then
-    self:drawEdges(fov, scale)
     self:drawFaces(fov, scale)
+    self:drawEdges(fov, scale)
     self:drawPoints(fov, scale)
   else
     io.write(mode .. ' is not a valid drawing mode.\n\tPossible values for mode: "points", "edges", "all"\n')

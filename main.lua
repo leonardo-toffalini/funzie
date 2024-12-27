@@ -14,7 +14,7 @@ local mode = nil
 
 local params = {
   {name = "shape", desc = "The shape to be rendered in 3D.", default = "cube"},
-  {name = "mode", desc = 'The draw mode for the shape. Possible values: "points", "edges", "all"', default = "all"}
+  {name = "mode", desc = 'The draw mode for the shape. Possible values: "points", "edges", "faces", all"', default = "edges"}
 }
 
 function love.load(args)

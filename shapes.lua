@@ -120,6 +120,32 @@ function Icosahedron:new()
     {2, 7}, {7, 9}, {9, 10}, {10, 5}, {5, 3},
     {3, 6}, {6, 12}, {12, 11}, {11, 8}, {8, 2}
   }
+
+  self.faces = {
+    -- upper pentagonal
+    {color = {0.7, 0, 0}, points = {1, 2, 9}},
+    {color = {0, 0.7, 0}, points = {1, 2, 11}},
+    {color = {0, 0.7, 0}, points = {1, 9, 5}},
+    {color = {0.7, 0, 0}, points = {1, 5, 6}},
+    {color = {0, 0, 0.7}, points = {1, 6, 11}},
+    -- lower pentagonal
+    {color = {0, 0, 0.7}, points = {4, 3, 10}},
+    {color = {0.7, 0, 0}, points = {4, 3, 12}},
+    {color = {0, 0.7, 0}, points = {4, 12, 8}},
+    {color = {0, 0, 0.7}, points = {4, 8, 7}},
+    {color = {0.7, 0, 0}, points = {4, 7, 10}},
+    -- connecting strip
+    {color = {0, 0, 0.7}, points = {2, 7, 9}},
+    {color = {0, 0.7, 0}, points = {7, 9, 10}},
+    {color = {0, 0, 0.7}, points = {9, 10, 5}},
+    {color = {0.7, 0, 0}, points = {10, 5, 3}},
+    {color = {0, 0.7, 0}, points = {5, 3, 6}},
+    {color = {0, 0, 0.7}, points = {3, 6, 12}},
+    {color = {0, 0.7, 0}, points = {6, 12, 11}},
+    {color = {0.7, 0, 0}, points = {12, 11, 8}},
+    {color = {0, 0, 0.7}, points = {11, 8, 2}},
+    {color = {0, 0.7, 0}, points = {8, 2, 7}},
+  }
 end
 
 --- Constructor for the Dodecahedron class
